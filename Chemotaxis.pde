@@ -1,28 +1,30 @@
-Bacteria [] bob; 
+Magnet [] bob; 
 void setup()   
  {     
-       
-     size(500,500);
-     bob = new Bacteria[100];
+     background(0);
+     size(300,300);
+     bob = new Magnet[50];
      for(int i = 0; i < bob.length; i++)
      {
-       bob[i] = new Bacteria();
+       bob[i] = new Magnet();
      }
  }   
  void draw()   
  {    
     for(int i = 0; i < bob.length; i++)
     {
-      bob[i].show();
       bob[i].move();
+      bob[i].show();
+      
+    }
  }  
- class Bacteria
+ class Magnet
  {     
      int x, y;
-     Bacteria()
+     Magnet()
      {
-        x = (int)(Math.random() * 501);
-       y= (int)(Math.random() * 501);
+       x =(int)(Math.random() * 300);
+       y= (int)(Math.random() * 300);
      }
      void move(){
        x++;
@@ -33,5 +35,4 @@ void setup()
        fill (255);
        ellipse(x,y,20,20);
      }
- }
  }
