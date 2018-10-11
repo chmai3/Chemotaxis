@@ -1,43 +1,53 @@
-Bacteria [] bob;
-int x = 150;
-void setup()   
- {     
-     background(0);
-     size(300,300);
-     bob = new Bacteria[100];
-     for(int i = 0; i < bob.length; i++)
-     {
-       bob[i] = new Bacteria();
-     }
- }   
- void draw()   
- {    
-    for(int i = 0; i < bob.length; i++)
-    {
-      bob[i].move();
-      bob[i].show();
-    }
-    if(mouseX > x ){ 
-        x = x + (int)(Math.random()*5-1);
-    }else{
-          x = x + (int)(Math.random()*5-3);
-    } 
- }  
- class Bacteria
- {     
-     int x, y;
-     Bacteria()
-     {
-       x =(int)(Math.random() * 300);
-       y= (int)(Math.random() * 300);
-     }
-     void move(){
-       x++;
-       y++;
-     }
-     void show()
-     {
-       fill (255);
-       ellipse(10,30,50,70);
-     }
- }
+normalParticle[] bob;
+void setup()
+{
+  size(300,300);
+  background(0);
+  bob = new normalParticle[100];
+  
+  for(int i = 0; i < bob.length; i++)
+  {
+    bob[i] = new normalParticle();
+  }
+}
+void draw()
+{
+  for(int i = 0; i < bob.length; i++)
+  {
+    bob[i].move();
+    bob[i].show();
+  }
+}
+class normalParticle //constructor
+{
+  double x,y,dSpeed, dDirection;
+  int colorParticle = color(255);
+  normalParticle(){
+    x= (int)(Math.random()*300);
+    y =(int)(Math.random()*300);
+    dSpeed = Math.random()*10;
+    dDirection = (Math.random()*2 * Math.PI);
+  }
+  void move(){
+    x = x +(Math.cos(dDirection) * dSpeed);
+    y = y + (Math.sin(dDirection) * dSpeed);
+  }
+  void show(){
+    fill(colorParticle);
+    ellipse((float)x, (float)y, 50,50);
+   
+}
+interface Particle
+{
+  public void show();
+  public void move();
+}
+class OddballParticle implements Particle //uses an interface
+{
+  //your code here
+}
+class JumboParticle //uses inheritance
+{
+  //your code here
+}
+}
